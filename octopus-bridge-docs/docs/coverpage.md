@@ -1,0 +1,13 @@
+<!-- _coverpage.md -->
+
+# Octopus Bridge API <small>v1.0</small>
+
+> The omni-channel commerce bridge. One API for products, inventory, orders & customers across every store you connect.
+
+- 🔐 API Key + Secret or OAuth 2.0 Bearer tokens
+- 📦 Full CRUD for products, variants, images, inventory
+- 🛒 Orders, transactions, customers & purchase orders
+- ⚡ Bulk endpoints for high-volume catalog sync
+
+[Get Started](authentication.md)
+[Browse Endpoints](shop.md)

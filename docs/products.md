@@ -365,19 +365,30 @@ HTTP/1.1 201 Created
 }
 ```
 If you are creating a matrix product, you need to send options in the variant node with their names like given below:
+
+```json
 "variants": [{
-"option1": "General Sizes",
-"option2": "General Colours",
-"option3": "Shoe Widths",
-}],
-The options node will contain the values of the options in an array.
-"options": [{
-"name": "General Sizes"
-}, {
-"name": "General Colours"
-}, {
-"name": "Shoe Widths"
+  "option1": "General Sizes",
+  "option2": "General Colours",
+  "option3": "Shoe Widths"
 }]
+```
+
+The options node will contain the values of the options in an array.
+
+```json
+"options": [
+  {
+    "name": "General Sizes"
+  },
+  {
+    "name": "General Colours"
+  },
+  {
+    "name": "Shoe Widths"
+  }
+]
+```
 
 ## 3.4 PUT /products/{product_id}
 

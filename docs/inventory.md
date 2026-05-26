@@ -51,7 +51,7 @@ Mandatory fields: location_id, inventory_item_id, available
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/v1/inventory_levels/set |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/inventory_levels/set.json |
 | Content-Type | application/json |
 | Auth Required | Yes |
 | Required OAuth Scope | write_inventory |
@@ -88,7 +88,7 @@ The bulk inventory_levels POST endpoint is used to POST inventory levels in bulk
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/v1/inventory_levels/bulk |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/inventory_levels/bulk.json |
 | Content-Type | application/json |
 | Auth Required | Yes |
 | Required OAuth Scope | write_inventory |

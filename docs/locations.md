@@ -11,7 +11,7 @@ GET /admin/api/2020-01/locations.json
 | Property | Value |
 | --- | --- |
 | HTTP Method | GET |
-| URL | https://api.octopusbridge.com/v1/locations |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/locations.json |
 | Auth Required | Yes |
 | Required OAuth Scope | read_inventory |
 | Success Response | 200 OK |

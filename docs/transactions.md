@@ -11,7 +11,7 @@ GET   /orders/{order_id}/transactions  Retrieve all transactions for a specific 
 | Property | Value |
 | --- | --- |
 | HTTP Method | GET |
-| URL | https://api.octopusbridge.com/v1/orders/{order_id}/transactions |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/orders/{order_id}/transactions.json |
 | Auth Required | Yes |
 | Required OAuth Scope | read_orders |
 | Success Response | 200 OK |
@@ -19,7 +19,7 @@ GET   /orders/{order_id}/transactions  Retrieve all transactions for a specific 
 Sample Request:
 
 GET /orders/ord_1001/transactions HTTP/1.1
-Host: api.octopusbridge.com
+Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 

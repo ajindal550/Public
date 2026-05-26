@@ -18,7 +18,7 @@ POST   /admin/api/2025-09/PurchaseOrder/CreateOrder.json  Create a new purchase 
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/admin/api/2025-09/PurchaseOrder/CreateOrder.json |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2025-09/PurchaseOrder/CreateOrder.json |
 | Content-Type | application/json |
 | Auth Required | Yes - X-API-Key / X-API-Secret |
 | Required OAuth Scope | write_orders |
@@ -45,7 +45,7 @@ POST   /admin/api/2025-09/PurchaseOrder/CreateOrder.json  Create a new purchase 
 Sample Request:
 
 POST /admin/api/2025-09/PurchaseOrder/CreateOrder.json HTTP/1.1
-Host: api.octopusbridge.com
+Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 Content-Type: application/json
@@ -90,7 +90,7 @@ POST   /admin/api/2025-09/PurchaseOrder/Purchaseorderline.json  Add a line item 
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/admin/api/2025-09/PurchaseOrder/Purchaseorderline.json |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2025-09/PurchaseOrder/Purchaseorderline.json |
 | Content-Type | application/json |
 | Auth Required | Yes - X-API-Key / X-API-Secret |
 | Required OAuth Scope | write_orders |
@@ -117,7 +117,7 @@ NOTE: The OrderID in the request body must match a valid purchase order ID retur
 Sample Request:
 
 POST /admin/api/2025-09/PurchaseOrder/Purchaseorderline.json HTTP/1.1
-Host: api.octopusbridge.com
+Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 Content-Type: application/json

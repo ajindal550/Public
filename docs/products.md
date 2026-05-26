@@ -212,7 +212,7 @@ Mandatory fields - Title and one Variant must exist in the request and Variant m
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/v1/products |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/products.json |
 | Content-Type | application/json |
 | Auth Required | Yes |
 | Required OAuth Scope | write_products |
@@ -386,7 +386,7 @@ PUT   /products/{product_id}  Update an existing product
 | Property | Value |
 | --- | --- |
 | HTTP Method | PUT |
-| URL | https://api.octopusbridge.com/v1/products/{product_id} |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/products/{product_id}.json |
 | Content-Type | application/json |
 | Auth Required | Yes |
 | Required OAuth Scope | write_products |
@@ -414,7 +414,7 @@ DELETE   /products/{product_id}  Delete a product and all its variants and image
 | Property | Value |
 | --- | --- |
 | HTTP Method | DELETE |
-| URL | https://api.octopusbridge.com/v1/products/{product_id} |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/products/{product_id}.json |
 | Auth Required | Yes |
 | Required OAuth Scope | write_products |
 | Success Response | 200 OK |
@@ -445,7 +445,7 @@ Mandatory fields - Title and one Variant must exist in the request and Variant m
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/v1/products/bulk |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/BulkProduct/bulkpost.json |
 | Content-Type | application/json |
 | Auth Required | Yes |
 | Required OAuth Scope | write_products |

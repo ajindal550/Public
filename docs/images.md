@@ -32,7 +32,7 @@ POST   /products/{product_id}/images  Add an image to a product
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/v1/products/{product_id}/images |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/products/{product_id}/images.json |
 | Content-Type | application/json |
 | Auth Required | Yes |
 | Required OAuth Scope | write_products |

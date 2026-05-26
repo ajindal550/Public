@@ -9,7 +9,7 @@ This documentation is the canonical reference for every public endpoint, request
 ## Base URL
 
 ```
-https://api.octopusbridge.com/v1
+https://octopusapi.24sevencommerce.com/admin/api/2020-01
 ```
 
 > All API traffic is served over HTTPS. Plain HTTP requests are rejected.

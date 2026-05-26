@@ -11,7 +11,7 @@ GET   /customers  Retrieve a list of customers
 | Property | Value |
 | --- | --- |
 | HTTP Method | GET |
-| URL | https://api.octopusbridge.com/v1/customers |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/customers.json |
 | Auth Required | Yes |
 | Required OAuth Scope | read_customers |
 | Success Response | 200 OK |
@@ -32,7 +32,7 @@ GET   /customers  Retrieve a list of customers
 Sample Request:
 
 GET /customers?limit=5 HTTP/1.1
-Host: api.octopusbridge.com
+Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 

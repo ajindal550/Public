@@ -6,7 +6,7 @@ A Postman collection covering all Octopus Bridge API endpoints is available from
 
 | Variable | Description |
 | --- | --- |
-| {{base_url}} | https://api.octopusbridge.com/v1 |
+| {{base_url}} | https://octopusapi.24sevencommerce.com/admin/api/2020-01 |
 | {{api_key}} | Your X-API-Key value |
 | {{api_secret}} | Your X-API-Secret value |
 | {{shop_id}} | Your connected shop identifier |
@@ -30,7 +30,7 @@ using Newtonsoft.Json;
 public class OctopusBridgeClient
 {
 private readonly HttpClient _client;
-private const string BaseUrl = "https://api.octopusbridge.com/v1";
+private const string BaseUrl = "https://octopusapi.24sevencommerce.com/admin/api/2020-01";
 
 public OctopusBridgeClient(string apiKey, string apiSecret)
 {

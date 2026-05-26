@@ -663,7 +663,7 @@ HTTP/1.1 200 OK
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/v1/orders |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/orders.json |
 | Content-Type | application/json |
 | Auth Required | Yes - X-API-Key / X-API-Secret or Bearer token |
 | Required OAuth Scope | write_orders |
@@ -737,7 +737,7 @@ HTTP/1.1 200 OK
 ## Request:
 
 ## POST /orders HTTP/1.1
-Host: api.octopusbridge.com
+Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 Content-Type: application/json
@@ -1000,7 +1000,7 @@ PUT   /orders/{order_id}   Update fields on an existing order
 | Property | Value |
 | --- | --- |
 | HTTP Method | PUT |
-| URL | https://api.octopusbridge.com/v1/orders/{order_id} |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/orders/{order_id}.json |
 | Content-Type | application/json |
 | Auth Required | Yes - X-API-Key / X-API-Secret or Bearer token |
 | Required OAuth Scope | write_orders |
@@ -1144,7 +1144,7 @@ DELETE   /orders/{order_id}   Permanently delete an order
 | Property | Value |
 | --- | --- |
 | HTTP Method | DELETE |
-| URL | https://api.octopusbridge.com/v1/orders/{order_id} |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/orders/{order_id}.json |
 | Auth Required | Yes - X-API-Key / X-API-Secret or Bearer token |
 | Required OAuth Scope | write_orders |
 | Success Response | 200 OK with deleted order summary |
@@ -1159,7 +1159,7 @@ CAUTION:  DELETE is restricted to test/sandbox orders only. Orders that have pay
 
 Request:
 DELETE /orders/ord_test_999 HTTP/1.1
-Host: api.octopusbridge.com
+Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 Response (200 OK):

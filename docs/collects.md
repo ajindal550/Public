@@ -25,7 +25,7 @@ This call creates a new link between an existing product and an existing collect
 | Property | Value |
 | --- | --- |
 | HTTP Method | POST |
-| URL | https://api.octopusbridge.com/v1/collects |
+| URL | https://octopusapi.24sevencommerce.com/admin/api/2020-01/collects.json |
 | Content-Type | application/json |
 | Auth Required | Yes |
 | Required OAuth Scope | write_collections |

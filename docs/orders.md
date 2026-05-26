@@ -14,9 +14,11 @@ The Orders resource provides full CRUD support for managing orders in the connec
 
 ## 10.2 GET /orders
 
-## An order is a customer's completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provide an email address or phone number, billing address and payment information.
+An order is a customer's completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provide an email address or phone number, billing address and payment information.
 
+```http
 GET   /orders  List all orders with optional filters
+```
 
 This endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error.
 
@@ -569,9 +571,7 @@ Note:
 Rate: Depending on a given point of sale system, we send tax rate as it is received in the order. In some POS, the order does not download to POS due to mismatch such as Lightspeed. You can handle it as you see fit.
 
 Location_ID: In case of some shopping carts/marketplaces like Woocommerce and Amazon, we do not receive any location_id in the fulfillments node. The location_id can not be left blank as it is mandatory. Therefore, in this instance we pass "location_id": 0.
-If you want to GET orders after a specific date, you can use the updated_at_min or updated_at_max filter. When you are using the updated_at_min filter or updated_at_max filter, you should compare not with the shopping cart/marketplace date but with the parameters that we have added namely:
-"octopus_created_at":
-"octopus_updated_at":
+If you want to GET orders after a specific date, you can use the updated_at_min or updated_at_max filter. When you are using the updated_at_min filter or updated_at_max filter, you should compare not with the shopping cart/marketplace date but with the parameters that we have added namely `octopus_created_at` and `octopus_updated_at`.
 
 While using the created_at_min and created_at_max filter, you will get the result based on octopus_created_at and octopus_updated_at only.
 You need to pass your system date. The dates shown on the orders will be of the Shopping cart/marketplace but the orders will be filtered on the basis of dates in octopus_created_at and octopus_updated_at fields.
@@ -583,48 +583,57 @@ No need to do anything for other platforms such as Shopify, Bigcommerce or Local
 So, if you get Amazon, Walmart or eBay in the "Source", you know that you have to ignore the tax_total.
 
 Below are all the Valid Statuses that Octopus API uses after Translating from various Shopping carts:
-Authorized
-Authorization
-PAID
-Refunded
-Refund
-Partially_Refunded
-Capture
-Sale
-Void
-Voided
+
+- Authorized
+- Authorization
+- PAID
+- Refunded
+- Refund
+- Partially_Refunded
+- Capture
+- Sale
+- Void
+- Voided
 
 Retrieves all orders after a specific ID
 
-Request:
+**Request:**
 
+```http
 GET /admin/api/2020-01/orders.json?since_id=2
+```
 
-Response:
+**Response:**
 
-This end point will return a list of orders generated after since id. The model of sales order is represented in the above request.
+This end point will return a list of orders generated after `since_id`. The model of sales order is represented in the above request.
 
-Response
-
+```http
 HTTP/1.1 200 OK
+```
 
 Retrieves an order count
 
-Request:
+**Request:**
 
-Get /admin/api/2020-01/orders/count.json
+```http
+GET /admin/api/2020-01/orders/count.json
+```
 
-Response:
+**Response:**
 
-Copy
+```http
 HTTP/1.1 200 OK
+```
+
+```json
 {
-"count": 620
+  "count": 620
 }
+```
 
 ## Order Object Schema
 
-## The following table defines every field in the Order object. Fields marked as System-set are automatically managed by the server and must not be included in POST or PUT request bodies.
+The following table defines every field in the Order object. Fields marked as `System-set` are automatically managed by the server and must not be included in POST or PUT request bodies.
 
 | Field | Type | Writable | Description |
 | --- | --- | --- | --- |
@@ -662,9 +671,11 @@ HTTP/1.1 200 OK
 
 ## 4. POST /orders - Create Order
 
-## 4.1 Endpoint Definition
+### 4.1 Endpoint Definition
 
-## POST   /orders   Create a new order in the connected shop
+```http
+POST   /orders   Create a new order in the connected shop
+```
 
 | Property | Value |
 | --- | --- |
@@ -676,9 +687,9 @@ HTTP/1.1 200 OK
 | Success Response | 201 Created |
 | Idempotent | No - each call creates a new order |
 
-## 4.2 Request Fields
+### 4.2 Request Fields
 
-## Top-Level Fields
+#### Top-Level Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
@@ -687,7 +698,7 @@ HTTP/1.1 200 OK
 | line_items | array | Yes | Array of one or more line item objects. See Line Item Fields below. |
 | shipping_address | object | No | Shipping destination. Required if any line item requires_shipping. |
 | billing_address | object | No | Billing address. Defaults to shipping_address if omitted. |
-| customer | object | No | Associate with an existing customer: {"id": "cust_jane01"}. |
+| customer | object | No | Associate with an existing customer: `{"id": "cust_jane01"}`. |
 | financial_status | string | No | pending, authorized, paid. Default: pending. |
 | currency | string | No | ISO 4217 currency code. Defaults to shop default currency. |
 | shipping_lines | array | No | Shipping method(s) to apply. |
@@ -698,7 +709,7 @@ HTTP/1.1 200 OK
 | send_receipt | boolean | No | Send order confirmation email to customer. Default: false. |
 | send_fulfillment_receipt | boolean | No | Send fulfillment emails when items are shipped. Default: false. |
 
-## Line Item Fields
+#### Line Item Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
@@ -710,7 +721,7 @@ HTTP/1.1 200 OK
 | taxable | boolean | No | Override taxable status. Defaults to variant setting. |
 | discount_allocations | array | No | Array of {amount, discount_application_index} objects for line-level discounts. |
 
-## Address Object Fields
+#### Address Object Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
@@ -727,7 +738,7 @@ HTTP/1.1 200 OK
 | phone | string | No | Phone number for this address in E.164 format. |
 | company | string | No | Company name for B2B orders. |
 
-## Shipping Line Fields
+#### Shipping Line Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
@@ -736,21 +747,24 @@ HTTP/1.1 200 OK
 | code | string | No | Internal shipping method code. |
 | carrier_identifier | string | No | Carrier identifier: fedex, ups, usps, dhl. |
 
-## 4.3 Sample Requests & Responses
+### 4.3 Sample Requests & Responses
 
-## Example A - Standard Order with Customer Reference
+#### Example A - Standard Order with Customer Reference
 
-## Request:
+**Request:**
 
-## POST /orders HTTP/1.1
+```http
+POST /orders HTTP/1.1
 Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 Content-Type: application/json
+```
 
-## Request Body:
+**Request Body:**
 
-## {
+```json
+{
   "email": "jane.doe@example.com",
   "phone": "+14155550123",
   "customer": { "id": "cust_jane01" },
@@ -793,10 +807,12 @@ Content-Type: application/json
     { "code": "SAVE10" }
   ]
 }
+```
 
-## Response (201 Created):
+**Response (201 Created):**
 
-## {
+```json
+{
   "order": {
     "id": "ord_1010",
     "order_number": 1010,
@@ -816,17 +832,12 @@ Content-Type: application/json
     "tags": "eco, api-order",
     "customer": {
       "id": "cust_jane01",
-      "first_name": "Jane",
-      "last_name": "Doe",
       "email": "jane.doe@example.com"
     },
     "line_items": [
       {
-        "id": "li_021",
+        "id": "li_020",
         "variant_id": "var_002",
-        "title": "Classic Cotton T-Shirt",
-        "variant_title": "Medium / White",
-        "sku": "TS-M-WHT",
         "quantity": 2,
         "price": "29.99",
         "total": "59.98",
@@ -834,11 +845,8 @@ Content-Type: application/json
         "taxable": true
       },
       {
-        "id": "li_022",
+        "id": "li_021",
         "variant_id": "var_010",
-        "title": "Merino Wool Sweater",
-        "variant_title": "Small / Oatmeal",
-        "sku": "MW-S-OAT",
         "quantity": 1,
         "price": "99.00",
         "total": "99.00",
@@ -866,12 +874,14 @@ Content-Type: application/json
     "cancelled_at": null
   }
 }
+```
 
-## Example B - Paid B2B Order with Billing Address
+#### Example B - Paid B2B Order with Billing Address
 
-## Request Body:
+**Request Body:**
 
-## {
+```json
+{
   "email": "procurement@widgetcorp.com",
   "financial_status": "paid",
   "source_name": "api",
@@ -903,10 +913,12 @@ Content-Type: application/json
     { "title": "Free Freight", "price": "0.00" }
   ]
 }
+```
 
-## Response (201 Created):
+**Response (201 Created):**
 
-## {
+```json
+{
   "order": {
     "id": "ord_1011",
     "order_number": 1011,
@@ -934,18 +946,22 @@ Content-Type: application/json
     "updated_at": "2024-07-15T14:00:00Z"
   }
 }
+```
 
-## Example C - Validation Error Response
+#### Example C - Validation Error Response
 
-## Request Body (missing required fields):
+**Request Body (missing required fields):**
 
-## {
+```json
+{
   "note": "This order has no line items or email"
 }
+```
 
-## Response (422 Unprocessable Entity):
+**Response (422 Unprocessable Entity):**
 
-## {
+```json
+{
   "error": {
     "code": "VALIDATION_ERROR",
     "message": "Request validation failed.",
@@ -956,52 +972,39 @@ Content-Type: application/json
     ]
   }
 }
+```
 
-## 4.4 Validation Rules
+### 4.4 Validation Rules
 
-## email is required and must be a valid email format
+- `email` is required and must be a valid email format.
+- `line_items` is required and must contain at least one item.
+- Each line item must have a valid `variant_id` that exists in the shop.
+- `quantity` must be a positive integer (minimum: 1).
+- `price` overrides, if provided, must be positive decimal strings.
+- If any line item has `requires_shipping: true`, `shipping_address` is required.
+- `country_code` in address objects must be a valid ISO 3166-1 alpha-2 code.
+- `currency`, if provided, must be a valid ISO 4217 code.
+- `discount_codes` entries must reference codes that exist and are active in the shop.
+- `financial_status` must be one of: `pending`, `authorized`, `paid`.
+- `source_name` must be one of: `api`, `web`, `pos`, `mobile`.
 
-## line_items is required and must contain at least one item
+### 4.5 Business Logic & Side Effects
 
-## Each line item must have a valid variant_id that exists in the shop
+- Inventory is decremented for each line item at the shop's default location when the order is created with `financial_status: paid`. For pending/authorized orders, inventory is reserved but not decremented.
+- If `send_receipt` is true, a confirmation email is dispatched to the provided email address.
+- If a `customer.id` is provided, the order is associated with that customer record and their `orders_count` and `total_spent` are updated.
+- `discount_codes` are validated at creation time. An invalid or expired code returns a 422 error.
+- Tax is calculated automatically based on shop tax settings and the `shipping_address` jurisdiction.
+- The order is created with `status: open` and `fulfillment_status: unfulfilled`.
+- A webhook event `orders/create` is dispatched to all registered webhook subscribers.
 
-## quantity must be a positive integer (minimum: 1)
+## 5. PUT /orders/{order_id} - Update Order
 
-## price overrides, if provided, must be positive decimal strings
+### 5.1 Endpoint Definition
 
-## If any line item has requires_shipping: true, shipping_address is required
-
-## country_code in address objects must be a valid ISO 3166-1 alpha-2 code
-
-## currency, if provided, must be a valid ISO 4217 code
-
-## discount_codes entries must reference codes that exist and are active in the shop
-
-## financial_status must be one of: pending, authorized, paid
-
-## source_name must be one of: api, web, pos, mobile
-
-## 4.5 Business Logic & Side Effects
-
-## Inventory is decremented for each line item at the shop's default location when the order is created with financial_status: paid. For pending/authorized orders, inventory is reserved but not decremented.
-
-## If send_receipt is true, a confirmation email is dispatched to the provided email address.
-
-## If a customer.id is provided, the order is associated with that customer record and their orders_count and total_spent are updated.
-
-## discount_codes are validated at creation time. An invalid or expired code returns a 422 error.
-
-## Tax is calculated automatically based on shop tax settings and the shipping_address jurisdiction.
-
-## The order is created with status: open and fulfillment_status: unfulfilled.
-
-## A webhook event orders/create is dispatched to all registered webhook subscribers.
-
-## PUT /orders/{order_id} - Update Order
-
-## 5.1 Endpoint Definition
-
+```http
 PUT   /orders/{order_id}   Update fields on an existing order
+```
 
 | Property | Value |
 | --- | --- |
@@ -1014,7 +1017,7 @@ PUT   /orders/{order_id}   Update fields on an existing order
 | Idempotent | Yes - same request body produces same result |
 | Partial Updates | Supported - only fields included in the body are updated |
 
-## 5.2 Updatable Fields
+### 5.2 Updatable Fields
 
 The following fields may be updated via PUT. System-managed fields (id, order_number, totals, fulfillment_status, timestamps) are read-only and ignored if included in the request body.
 
@@ -1030,20 +1033,25 @@ The following fields may be updated via PUT. System-managed fields (id, order_nu
 
 WARNING:  Line items, discount codes, and shipping lines cannot be modified after order creation. To change order contents, cancel and recreate the order, or use the Refund API.
 
-## 5.3 Sample Requests & Responses
+### 5.3 Sample Requests & Responses
 
 ### Example A - Update Email, Tags, and Note
 
 Request:
+```http
 PUT /orders/ord_1010 HTTP/1.1
+```
 Request Body:
+```json
 {
   "email": "jane.new@example.com",
   "note": "Customer updated delivery instructions: ring doorbell twice",
   "tags": "eco, api-order, updated",
   "email_notif": false
 }
+```
 Response (200 OK):
+```json
 {
   "order": {
     "id": "ord_1010",
@@ -1058,10 +1066,12 @@ Response (200 OK):
     "updated_at": "2024-07-15T13:00:00Z"
   }
 }
+```
 
 ### Example B - Update Shipping Address (before fulfillment)
 
 Request Body:
+```json
 {
   "shipping_address": {
     "first_name": "Jane",
@@ -1077,7 +1087,9 @@ Request Body:
   },
   "email_notif": true
 }
+```
 Response (200 OK):
+```json
 {
   "order": {
     "id": "ord_1010",
@@ -1096,14 +1108,18 @@ Response (200 OK):
     "updated_at": "2024-07-15T13:30:00Z"
   }
 }
+```
 
 ### Example C - Attempt to Update a Cancelled Order
 
 Request Body:
+```json
 {
   "note": "Trying to update after cancellation"
 }
+```
 Response (422 Unprocessable Entity):
+```json
 {
   "error": {
     "code": "ORDER_NOT_EDITABLE",
@@ -1112,10 +1128,12 @@ Response (422 Unprocessable Entity):
     "status": 422
   }
 }
+```
 
 ### Example D - Attempt to Update Shipping on a Fulfilled Order
 
 Response (422 Unprocessable Entity):
+```json
 {
   "error": {
     "code": "SHIPPING_ADDRESS_LOCKED",
@@ -1124,28 +1142,29 @@ Response (422 Unprocessable Entity):
     "status": 422
   }
 }
+```
 
-## 5.4 Validation Rules
-
+### 5.4 Validation Rules
 The order_id in the URL must refer to an existing order; returns 404 if not found
-email, if provided, must be a valid email format
-phone, if provided, must be in E.164 format
-shipping_address updates are blocked if fulfillment_status is fulfilled or partial
-System-set fields included in the request body are silently ignored (not treated as errors)
-An empty request body (no updatable fields) returns 200 OK with the unchanged order
+- email, if provided, must be a valid email format
+- phone, if provided, must be in E.164 format
+- shipping_address updates are blocked if fulfillment_status is fulfilled or partial
+- System-set fields included in the request body are silently ignored (not treated as errors)
+- An empty request body (no updatable fields) returns 200 OK with the unchanged order
 
-## 5.5 Business Logic & Side Effects
-
-If email_notif: true is included, an order update notification email is sent to the order's email address after a successful update.
-Updating shipping_address does not recalculate shipping costs. If the new address would incur different charges, cancel and recreate the order.
-Tag updates are a full replacement - the existing tag string is overwritten by the new value. To append tags, retrieve the current tags first.
-A webhook event orders/updated is dispatched to all registered webhook subscribers on every successful update.
+### 5.5 Business Logic & Side Effects
+- If email_notif: true is included, an order update notification email is sent to the order's email address after a successful update.
+- Updating shipping_address does not recalculate shipping costs. If the new address would incur different charges, cancel and recreate the order.
+- Tag updates are a full replacement - the existing tag string is overwritten by the new value. To append tags, retrieve the current tags first.
+- A webhook event orders/updated is dispatched to all registered webhook subscribers on every successful update.
 
 ## 6. DELETE /orders/{order_id} - Delete Order
 
-## 6.1 Endpoint Definition
+### 6.1 Endpoint Definition
 
+```http
 DELETE   /orders/{order_id}   Permanently delete an order
+```
 
 | Property | Value |
 | --- | --- |
@@ -1159,16 +1178,19 @@ DELETE   /orders/{order_id}   Permanently delete an order
 
 CAUTION:  DELETE is restricted to test/sandbox orders only. Orders that have payment transactions, fulfillments, or refunds attached must be cancelled (POST /orders/{id}/cancel) instead of deleted. Attempting to delete a live order with financial activity returns a 422 error.
 
-## 6.2 Sample Requests & Responses
+### 6.2 Sample Requests & Responses
 
 ### Example A - Successful Deletion of a Test Order
 
 Request:
+```http
 DELETE /orders/ord_test_999 HTTP/1.1
 Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
+```
 Response (200 OK):
+```json
 {
   "deleted": true,
   "id": "ord_test_999",
@@ -1176,10 +1198,12 @@ Response (200 OK):
   "deleted_at": "2024-07-15T16:00:00Z",
   "message": "Order ord_test_999 has been permanently deleted."
 }
+```
 
 ### Example B - Order Not Found
 
 Response (404 Not Found):
+```json
 {
   "error": {
     "code": "RESOURCE_NOT_FOUND",
@@ -1188,10 +1212,12 @@ Response (404 Not Found):
     "status": 404
   }
 }
+```
 
 ### Example C - Order Has Financial Transactions (Cannot Delete)
 
 Response (422 Unprocessable Entity):
+```json
 {
   "error": {
     "code": "ORDER_NOT_DELETABLE",
@@ -1200,21 +1226,26 @@ Response (422 Unprocessable Entity):
     "status": 422
   }
 }
+```
 
 ### Example D - Order Already Cancelled (Safe to Delete)
 
 A cancelled order with no transaction history (e.g., cancelled before payment) can be deleted:
 Request:
+```http
 DELETE /orders/ord_cancelled_test HTTP/1.1
+```
 Response (200 OK):
+```json
 {
   "deleted": true,
   "id": "ord_cancelled_test",
   "deleted_at": "2024-07-15T16:05:00Z",
   "message": "Order ord_cancelled_test has been permanently deleted."
 }
+```
 
-## 6.3 Deletion Rules & Constraints
+### 6.3 Deletion Rules & Constraints
 
 An order may only be deleted if ALL of the following conditions are true:
 
@@ -1229,13 +1260,12 @@ An order may only be deleted if ALL of the following conditions are true:
 
 WARNING:  In the production environment, only orders created via the API (source_name: api) with no financial activity can be deleted. All other orders should be cancelled using the POST /orders/{id}/cancel endpoint.
 
-## 6.4 Business Logic & Side Effects
-
-Deletion is permanent and irreversible. There is no soft-delete or recycle bin.
-If the order was associated with a customer record, the customer's orders_count is decremented by 1 after deletion.
-Inventory is not automatically restocked on deletion. Use POST /orders/{id}/cancel with restock: true if inventory should be returned.
-A webhook event orders/delete is dispatched to all registered webhook subscribers with the deleted order ID.
-Deleted orders are excluded from all reporting and analytics data.
+### 6.4 Business Logic & Side Effects
+- Deletion is permanent and irreversible. There is no soft-delete or recycle bin.
+- If the order was associated with a customer record, the customer's orders_count is decremented by 1 after deletion.
+- Inventory is not automatically restocked on deletion. Use POST /orders/{id}/cancel with restock: true if inventory should be returned.
+- A webhook event orders/delete is dispatched to all registered webhook subscribers with the deleted order ID.
+- Deleted orders are excluded from all reporting and analytics data.
 
 ## 7. Error Reference for Order Endpoints
 
@@ -1253,7 +1283,7 @@ All errors follow the standard Octopus Bridge error envelope. Below is the compl
 | 429 | Rate Limited | Request rate limit exceeded. Wait for Retry-After seconds. |
 | 500 | Internal Error | Unexpected server error. Retry with exponential backoff; contact support if persistent. |
 
-## 7.1 Order-Specific Error Codes
+### 7.1 Order-Specific Error Codes
 
 | Error Code | Endpoint | Description |
 | --- | --- | --- |

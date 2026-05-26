@@ -13,7 +13,9 @@ NOTE: Purchase Order endpoints use the /admin/api/2025-09/ base path and are ver
 
 ## 11.2 POST /PurchaseOrder/CreateOrder.json
 
+```http
 POST   /admin/api/2025-09/PurchaseOrder/CreateOrder.json  Create a new purchase order
+```
 
 | Property | Value |
 | --- | --- |
@@ -44,14 +46,17 @@ POST   /admin/api/2025-09/PurchaseOrder/CreateOrder.json  Create a new purchase 
 
 Sample Request:
 
+```http
 POST /admin/api/2025-09/PurchaseOrder/CreateOrder.json HTTP/1.1
 Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 Content-Type: application/json
+```
 
 Request Body:
 
+```json
 {
 "orderedDate":   "2026-03-20T10:00:00",
 "receivedDate":  "2026-03-22T10:00:00",
@@ -66,14 +71,17 @@ Request Body:
 "createTime":    "2026-03-20T09:00:00",
 "timeStamp":     "2026-03-20T09:00:00"
 }
+```
 
 Response (200 OK):
 
+```json
 {
 "status":  "Success",
 "message": "Purchase order created successfully.",
 "orderId": 3021
 }
+```
 
 ### Response Fields
 
@@ -85,7 +93,9 @@ Response (200 OK):
 
 ## 11.3 POST /PurchaseOrder/Purchaseorderline.json
 
+```http
 POST   /admin/api/2025-09/PurchaseOrder/Purchaseorderline.json  Add a line item to a purchase order
+```
 
 | Property | Value |
 | --- | --- |
@@ -116,14 +126,17 @@ NOTE: The OrderID in the request body must match a valid purchase order ID retur
 
 Sample Request:
 
+```http
 POST /admin/api/2025-09/PurchaseOrder/Purchaseorderline.json HTTP/1.1
 Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
 Content-Type: application/json
+```
 
 Request Body:
 
+```json
 {
 "OrderID":       3021,
 "ItemID":        "SKU-78923",
@@ -137,14 +150,17 @@ Request Body:
 "CreateTime":    "2026-03-20T09:30:00",
 "TimeStamp":     "2026-03-20T09:30:00"
 }
+```
 
 Response (200 OK):
 
+```json
 {
 "status":  "Success",
 "message": "Order line created successfully.",
 "orderId": 0
 }
+```
 
 ### Response Fields
 
@@ -159,11 +175,15 @@ Response (200 OK):
 Purchase orders are created in two steps. First, create the purchase order header to obtain an orderId, then add one or more line items referencing that orderId:
 
 // Step 1 - Create the purchase order header
+```http
 POST /admin/api/2025-09/PurchaseOrder/CreateOrder.json
+```
 → Response: { "orderId": 3021 }
 
 // Step 2 - Add line items using the returned orderId
+```http
 POST /admin/api/2025-09/PurchaseOrder/Purchaseorderline.json
 Body: { "OrderID": 3021, "ItemID": "SKU-78923", ... }
+```
 
 // Repeat Step 2 for each additional line item on the same order

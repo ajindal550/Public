@@ -6,7 +6,9 @@ The Customers resource provides read access to customer records in the connected
 
 ## 12.2 GET /customers
 
+```http
 GET   /customers  Retrieve a list of customers
+```
 
 | Property | Value |
 | --- | --- |
@@ -31,13 +33,16 @@ GET   /customers  Retrieve a list of customers
 
 Sample Request:
 
+```http
 GET /customers?limit=5 HTTP/1.1
 Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
+```
 
 Sample Response (200 OK):
 
+```json
 {
 "customers": [
 {
@@ -65,3 +70,4 @@ Sample Response (200 OK):
 ],
 "pagination": { "total": 1540, "page": 1, "limit": 5, "pages": 308 }
 }
+```

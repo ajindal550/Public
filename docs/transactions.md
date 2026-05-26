@@ -6,7 +6,9 @@ Transactions represent payment events associated with an order - such as authori
 
 ## 13.2 GET /orders/{order_id}/transactions
 
+```http
 GET   /orders/{order_id}/transactions  Retrieve all transactions for a specific order
+```
 
 | Property | Value |
 | --- | --- |
@@ -18,13 +20,16 @@ GET   /orders/{order_id}/transactions  Retrieve all transactions for a specific 
 
 Sample Request:
 
+```http
 GET /orders/ord_1001/transactions HTTP/1.1
 Host: octopusapi.24sevencommerce.com
 X-API-Key: your_api_key
 X-API-Secret: your_api_secret
+```
 
 Sample Response (200 OK):
 
+```json
 {
 "transactions": [
 {
@@ -51,6 +56,7 @@ Sample Response (200 OK):
 }
 ]
 }
+```
 
 ### Transaction Object Fields
 

@@ -36,9 +36,13 @@ This endpoint implements pagination by using links that are provided in the resp
 
 Sample Request:
 
+```http
 GET /admin/api/2020-01/orders.json
+```
+
 Sample Response (200 OK):
 
+```json
 {
 "id": 8,
 "source": "BIGCOMMERCE",
@@ -559,6 +563,8 @@ Sample Response (200 OK):
 "octopus_created_at": "2023-01-04T16:01:10-00:00",
 "octopus_updated_at": "2023-01-04T16:13:07-00:00"
 }
+```
+
 Note:
 Rate: Depending on a given point of sale system, we send tax rate as it is received in the order. In some POS, the order does not download to POS due to mismatch such as Lightspeed. You can handle it as you see fit.
 

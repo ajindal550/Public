@@ -3,21 +3,18 @@
 ## 5.1 Overview
 
 A variant can be added to a Product resource to represent one version of a product with several options. The Product resource will have a variant for every possible combination of its options.
-The Octopus Rest API lets you do the following with the Product variants resource.
-GET /admin/api/2020-01/variants/{variant_id}.json
-Retrieve a single Product Variant by ID
-GET/admin/api/2020-01/Variants.json?sku={SKU_id)
-Retrieve a Product Variant by SKU
-GET/admin/api/2020-01/products/{product_id}/Variants.json
-Retrieve all variants of a Product
-admin/api/2020-01/products/{product_id}/Variants/count.json
-Retrieve count of variants of a Product
-PUT /admin/api/2020-01/variants/{variant_id}.json
-Modify an existing Product Variant
-POST /admin/api/2020-01/products/{variant_id}/variants.json
-Create a new Product Variant
-DELETE /admin/api/2020-01/products/{product_id}/variants/{variant_id}.json
-Delete any existing variant of a products.
+
+The Octopus Rest API lets you do the following with the Product variants resource:
+
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| GET | `/admin/api/2020-01/variants/{variant_id}.json` | Retrieve a single Product Variant by ID |
+| GET | `/admin/api/2020-01/Variants.json?sku={SKU_id}` | Retrieve a Product Variant by SKU |
+| GET | `/admin/api/2020-01/products/{product_id}/Variants.json` | Retrieve all variants of a Product |
+| GET | `/admin/api/2020-01/products/{product_id}/Variants/count.json` | Retrieve count of variants of a Product |
+| PUT | `/admin/api/2020-01/variants/{variant_id}.json` | Modify an existing Product Variant |
+| POST | `/admin/api/2020-01/products/{product_id}/variants.json` | Create a new Product Variant |
+| DELETE | `/admin/api/2020-01/products/{product_id}/variants/{variant_id}.json` | Delete any existing variant of a product |
 
 Note: We have added a custom_attributes node in the variations endpoint. This node is an array type. You can add upto 20 unique custom attributes per merchant account. The data type of this node is string. You can park any information there. You can send the custom_attribute as:
 

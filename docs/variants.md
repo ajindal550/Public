@@ -56,10 +56,10 @@ HTTP/1.1 200 OK
 "product_id": 84630,
 "title": null,
 "price": 27.9900,
-"PriceA": "",
-"PriceB": "",
-"PriceC": "",
-"ListPrice": "",
+"price_a": "",
+"price_b": "",
+"price_c": "",
+"list_price": "",
 "MSRP": "",
 "sku": "5116",
 "position": null,
@@ -135,10 +135,10 @@ Sample Request Body:
 "option3": "",
 "barcode": "",
 "price": "85",
-"PriceA": "",
-"PriceB": "",
-"PriceC": "",
-"ListPrice": "",
+"price_a": "",
+"price_b": "",
+"price_c": "",
+"list_price": "",
 "MSRP": "",
 "cost_price": "",
 "sales_price": "",
@@ -175,10 +175,10 @@ HTTP/1.1 201 Created
 "product_id": 13120,
 "title": null,
 "price": 85,
-"PriceA": "",
-"PriceB": "",
-"PriceC": "",
-"ListPrice": "",
+"price_a": "",
+"price_b": "",
+"price_c": "",
+"list_price": "",
 "MSRP": "",
 "sku": "45689",
 "position": null,
@@ -245,10 +245,10 @@ HTTP/1.1 200 OK
 "product_id": 84630,
 "title": null,
 "price": 99.00,
-"PriceA": ""
-"PriceB": ""
-"PriceC": ""
-"ListPrice":""
+"price_a": ""
+"price_b": ""
+"price_c": ""
+"list_price":""
 "MSRP": ""
 "sku": "5116",
 "position": null,

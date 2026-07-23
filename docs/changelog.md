@@ -13,7 +13,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Documentation-only updates. **The underlying API behaviour has not changed.**
 
 ### Added
-- **Retail Advisor section:** Added a dedicated Retail Advisor block to the Introduction page calling out the PO and SO APIs that now power the Retail Advisor connector. Includes a suggested integration path (Authentication → Purchase Orders → Orders) so partners building against Retail Advisor can get to the right endpoints in one click.
+- **Retail Advisor section — rewritten & clarified:** The Introduction page now describes what Retail Advisor actually does (a POS-connected AI advisor answering plain-English questions on mobile) rather than treating it as a generic "back-office integration". Added a **"Which endpoints do I need?"** integration-profile table so partners can see at a glance whether they need PO/SO endpoints for their specific integration — the answer is *only* if the downstream destination is Retail Advisor.
+- **PO & SO context callouts:** Added banner callouts to the top of the [Purchase Orders](purchase-orders.md) and [Orders](orders.md) pages explaining that PO endpoints are RA-only and that Orders doubles as the SO surface for RA. Each callout ties the endpoint back to the specific Retail Advisor capability it powers (vendor intelligence, reorder recommendations, sales forecasting, etc.).
 
 ### Fixed
 - **Page title & link previews:** Sharing the docs URL in Slack/Teams/iMessage used to unfurl as "Overview". Updated the `<title>` tag, docsify site name and sidebar label to consistently read **"Octopus Bridge API Documentation"**, and added Open Graph + Twitter Card meta tags so link previews look right in every messaging app.

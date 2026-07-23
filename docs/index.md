@@ -8,12 +8,36 @@ This documentation is the canonical reference for every public endpoint, request
 
 ## Retail Advisor integration
 
-Octopus Bridge now offers dedicated **Purchase Order (PO)** and **Sales Order (SO)** APIs that plug directly into **Retail Advisor**, letting merchants keep their back-office replenishment and order-fulfilment workflows in perfect sync with every connected channel.
+**[Retail Advisor](https://octopusbridge.com/retail-advisor)** is Octopus Bridge's AI-powered retail intelligence product. It connects to a merchant's POS and gives store owners instant, plain-English answers about their business — right from their phone. Think of it as a ChatGPT-style assistant trained specifically on that merchant's retail data.
 
-- **[Purchase Orders API](purchase-orders.md)** — create and manage inbound POs sent to suppliers. Retail Advisor uses this endpoint to push replenishment orders into Octopus Bridge and receive real-time status updates.
-- **[Orders API](orders.md)** — the Sales Order (SO) surface. Capture, update and reconcile sales orders originating from any connected channel and mirror them into Retail Advisor for fulfilment, accounting and reporting.
+Retail Advisor turns raw POS data into daily decisions:
 
-If you are building a Retail Advisor connector, start with **[Authentication](authentication.md)** → **[Purchase Orders](purchase-orders.md)** → **[Orders](orders.md)**.
+- **Daily insights** — what's selling, what's slowing, what needs attention right now
+- **Inventory guidance** — low-stock alerts, overstock warnings, reorder suggestions
+- **Sales performance** — top sellers, slow movers, trend movements
+- **Forecasting** — category-level seasonal demand and buying recommendations
+- **Vendor intelligence** — which vendors need a PO, which are underperforming
+- **Ask anything** — *"What should I reorder today?" · "What's trending down?" · "Which items are at risk?"*
+
+For this intelligence to work, Retail Advisor needs a continuous feed of **sales order (SO)** and **purchase order (PO)** activity from the merchant's POS. That's what the following two endpoints do:
+
+- **[Purchase Orders API](purchase-orders.md)** — push POs raised in the POS into Octopus Bridge so Retail Advisor can build vendor performance and reorder recommendations.
+- **[Orders API](orders.md)** *(used here as the Sales Order surface)* — stream sales orders in so Retail Advisor can compute what's selling, what's slowing, and forecast seasonal demand.
+
+> **When are PO / SO endpoints required?**
+> **Only when the downstream destination is Retail Advisor.** If you are integrating a merchant to Shopify, BigCommerce, or any other non-RA destination, you do **not** need to call the PO or SO endpoints — the standard catalog, inventory and orders endpoints are enough.
+
+## Which endpoints do I need?
+
+All partners use the same core Octopus Bridge endpoints regardless of the downstream destination. PO / SO are conditional and only apply to Retail Advisor.
+
+| Your integration goal | Endpoints you use | PO required? | SO required? |
+| --- | --- | --- | --- |
+| Basic catalog & inventory sync (e.g. Shopify, BigCommerce) | [Products](products.md), [Variants](variants.md), [Images](images.md), [Inventory Levels](inventory.md), [Collections](collections.md), [Collects](collects.md), [Locations](locations.md) | ❌ No | ❌ No |
+| Full commerce sync (adds order capture & customers) | Above **+** [Customers](customers.md), [Orders](orders.md), [Transactions](transactions.md) | ❌ No | ❌ No |
+| **Retail Advisor** — feed POS data into the AI advisor | Above **+** [Purchase Orders](purchase-orders.md) **+** [Orders](orders.md) tagged as SO | ✅ Yes | ✅ Yes |
+
+If you're unsure which profile applies to your integration, your Octopus Bridge account manager can confirm.
 
 ## Base URL
 

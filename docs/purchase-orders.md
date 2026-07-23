@@ -1,5 +1,7 @@
 # Purchase Orders
 
+> **📌 Retail Advisor integrations only.** The Purchase Orders endpoints are used **only** when the downstream destination is [Retail Advisor](/#/?id=retail-advisor-integration). Pushing PO activity from a merchant's POS lets Retail Advisor build **vendor performance insights**, **reorder recommendations**, and answer questions like *"Which vendors need a PO?"* and *"What should I reorder today?"*. If you are integrating with Shopify, BigCommerce, or any non-RA destination, you do **not** need this section.
+
 ## 11.1 Overview
 
 The Purchase Orders resource enables creation and management of purchase orders and their associated line items within the connected shop. Purchase orders track inbound inventory from suppliers, including ordered, received, and arrival dates, as well as line-item-level pricing and receipt confirmation.

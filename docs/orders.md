@@ -1,5 +1,8 @@
 # Orders
 
+> **ℹ️ Universal endpoint — also acts as the Sales Order (SO) surface for Retail Advisor.**
+> The Orders endpoints work for **every** Octopus Bridge integration. For [Retail Advisor](/#/?id=retail-advisor-integration) integrations they additionally serve as the **Sales Order (SO)** feed — no separate SO endpoints exist. Streaming order activity here is what lets Retail Advisor compute daily insights on **top sellers, slow movers, category trends, and seasonal forecasting**, and answer questions like *"What's trending down?"* and *"Which items are at risk?"*.
+
 ## 10.1 Overview
 
 The Orders resource provides full CRUD support for managing orders in the connected shop. The GET endpoints allow partners to retrieve order lists and individual order details. POST, PUT, and DELETE enable programmatic order creation, editing, and removal.

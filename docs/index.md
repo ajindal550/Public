@@ -1,6 +1,6 @@
 # Octopus Bridge REST API
 
-**Version 1.0 — March 2026**
+**API Version 1.0** &nbsp;·&nbsp; Docs last updated **July 2026** &nbsp;·&nbsp; [See what changed →](changelog.md)
 
 The Octopus Bridge REST API is the integration layer that connects merchants, marketplaces and back-office systems to the Octopus Bridge platform. It exposes everything you need to build a real omni-channel commerce experience: catalog management, inventory sync, order capture, customer records, and financial transactions.
 

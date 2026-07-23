@@ -10,4 +10,6 @@
 - ⚡ Bulk endpoints for high-volume catalog sync
 
 [Get Started](authentication.md)
-[Browse Endpoints](shop.md)
+[What's new →](changelog.md)
+
+<p style="margin-top:32px; font-size:13px; color:#9fb6bb; letter-spacing:0.08em; font-family:ui-monospace,Menlo,monospace;">DOCS LAST UPDATED · JULY 2026</p>

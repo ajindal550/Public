@@ -1,6 +1,6 @@
 **Getting Started**
 
-- [Overview](/)
+- [Introduction](/)
 - [Authentication](authentication.md)
 - [Quick Start](quickstart.md)
 

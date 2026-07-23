@@ -1,10 +1,19 @@
-# Octopus Bridge REST API
+# Octopus Bridge API Documentation
 
 **API Version 1.0** &nbsp;·&nbsp; Docs last updated **July 2026** &nbsp;·&nbsp; [See what changed →](changelog.md)
 
 The Octopus Bridge REST API is the integration layer that connects merchants, marketplaces and back-office systems to the Octopus Bridge platform. It exposes everything you need to build a real omni-channel commerce experience: catalog management, inventory sync, order capture, customer records, and financial transactions.
 
 This documentation is the canonical reference for every public endpoint, request, response and field.
+
+## Retail Advisor integration
+
+Octopus Bridge now offers dedicated **Purchase Order (PO)** and **Sales Order (SO)** APIs that plug directly into **Retail Advisor**, letting merchants keep their back-office replenishment and order-fulfilment workflows in perfect sync with every connected channel.
+
+- **[Purchase Orders API](purchase-orders.md)** — create and manage inbound POs sent to suppliers. Retail Advisor uses this endpoint to push replenishment orders into Octopus Bridge and receive real-time status updates.
+- **[Orders API](orders.md)** — the Sales Order (SO) surface. Capture, update and reconcile sales orders originating from any connected channel and mirror them into Retail Advisor for fulfilment, accounting and reporting.
+
+If you are building a Retail Advisor connector, start with **[Authentication](authentication.md)** → **[Purchase Orders](purchase-orders.md)** → **[Orders](orders.md)**.
 
 ## Base URL
 

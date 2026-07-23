@@ -12,7 +12,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 Documentation-only updates. **The underlying API behaviour has not changed.**
 
+### Added
+- **Retail Advisor section:** Added a dedicated Retail Advisor block to the Introduction page calling out the PO and SO APIs that now power the Retail Advisor connector. Includes a suggested integration path (Authentication → Purchase Orders → Orders) so partners building against Retail Advisor can get to the right endpoints in one click.
+
 ### Fixed
+- **Page title & link previews:** Sharing the docs URL in Slack/Teams/iMessage used to unfurl as "Overview". Updated the `<title>` tag, docsify site name and sidebar label to consistently read **"Octopus Bridge API Documentation"**, and added Open Graph + Twitter Card meta tags so link previews look right in every messaging app.
 - **Products & Variants:** The `PriceA`, `PriceB`, `PriceC`, and `ListPrice` fields shown in `POST /products` and `POST /variants` samples were documented in PascalCase, but only the snake_case versions (`price_a`, `price_b`, `price_c`, `list_price`) actually persist. All 32 field references corrected to snake_case across `products.md` and `variants.md`.
 - **All resource pages:** Endpoint URLs were shown as `https://api.octopusbridge.com/v1/…`. Corrected to the real host `https://octopusapi.24sevencommerce.com/admin/api/2020-01/…json` across 25 URL references in 11 files.
 - **Orders — POST endpoint (Section 4):** The entire section had heading-style formatting corruption from the source Word doc that made request/response samples render as unformatted headings. Section fully rewritten: request/response bodies now properly fenced as JSON code blocks, sub-sections renumbered as `H3`, and validation rules restructured as bullet lists.

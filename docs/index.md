@@ -31,11 +31,11 @@ For this intelligence to work, Retail Advisor needs a continuous feed of **sales
 
 All partners use the same core Octopus Bridge endpoints regardless of the downstream destination. PO / SO are conditional and only apply to Retail Advisor.
 
-| Your integration goal | Endpoints you use | PO / SO required? |
-| --- | --- | --- |
-| Basic catalog & inventory sync (e.g. Shopify, BigCommerce) | [Products](products.md), [Variants](variants.md), [Images](images.md), [Inventory Levels](inventory.md), [Collections](collections.md), [Collects](collects.md), [Locations](locations.md) | ❌ No |
-| Full commerce sync (adds order capture & customers) | Above **+** [Customers](customers.md), [Orders](orders.md), [Transactions](transactions.md) | ❌ No |
-| **Retail Advisor** — feed POS data into the AI advisor | Above **+** [Purchase Orders](purchase-orders.md) **+** [Orders](orders.md) tagged as SO | ✅ Yes |
+| Your integration goal | Endpoints you use |
+| --- | --- |
+| Basic catalog & inventory sync (e.g. Shopify, BigCommerce) | [Products](products.md), [Variants](variants.md), [Images](images.md), [Inventory Levels](inventory.md), [Collections](collections.md), [Collects](collects.md), [Locations](locations.md) |
+| Full commerce sync (adds order capture & customers) | Above **+** [Customers](customers.md), [Orders](orders.md), [Transactions](transactions.md) |
+| **Retail Advisor** — feed POS data into the AI advisor | Above **+** [Purchase Orders](purchase-orders.md) **+** [Orders](orders.md) tagged as SO |
 
 If you're unsure which profile applies to your integration, your Octopus Bridge account manager can confirm.
 
